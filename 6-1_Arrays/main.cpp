@@ -20,11 +20,15 @@ int main()
   using std::cout;
   using std::cin;
 
+  // ----------------------------------------------------------------
+  // Create an array using the animal enumeration from above
   int animalLegs[Animals::ANIMALS_MAX_LENGTH] = {2,4,4,4,2,0};
 
   cout << "An elephant has " << animalLegs[Animals::ANIMALS_ELEPHANT] << " legs.\n";
 
 
+  // ----------------------------------------------------------------
+  // Have user guess a number
   // Ask user for input
   int num;
   do
