@@ -42,9 +42,7 @@ int main()
   std::cin >> n_students;  
 
   // Dynamically allocate an array to hold the info for each student
-  Student *AllStudents = new Student[n_students];  
-
-  Student stud1;
+  Student *AllStudents = new Student[n_students]; 
 
   // Ask for each student's info
   for (int n = 0; n < n_students; ++n)
