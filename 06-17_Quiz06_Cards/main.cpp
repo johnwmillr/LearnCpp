@@ -6,7 +6,6 @@
 #include <ctime>   // for time()
 #include "CardGame.h"
 
-
 int main()
 {
   // Random seeding
