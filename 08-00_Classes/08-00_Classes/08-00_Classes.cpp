@@ -4,20 +4,10 @@
 #include "stdafx.h"
 #include <iostream>
 #include <string>
+#include <stdint.h>
+#include "Date.h"
 
-class DateClass
-{
-public:
-	int m_year;
-	int m_month;
-	int m_day;
-
-	void print()
-	{
-		std::cout << m_year << "/" << m_month << "/" << m_day << '\n';
-	}
-};
-
+// ---------------------------------------------------------
 class Employee
 {
 public:
@@ -32,7 +22,7 @@ public:
 	}
 };
 
-
+// ---------------------------------------------------------
 class Point3d
 {
 	double m_x;
@@ -58,16 +48,17 @@ public:
 	}
 };
 
+// ---------------------------------------------------------
 class Ball
 {
-	std::string m_color;
+private:
+	const std::string m_color;
 	double m_radius;
 
 public:
-	Ball(const std::string &color = "Black", double radius = 10.0)
+	Ball(const std::string &color = "black", double radius = 10.0)
+		: m_color(color), m_radius(radius) // member initializer list
 	{
-		m_color = color;
-		m_radius = radius;
 	}
 
 	void print()
@@ -76,12 +67,51 @@ public:
 	}
 };
 
+// ---------------------------------------------------------
+class Something
+{
+private:
+	int m_value1;
+	double m_value2;
+	char m_value3;
+	float m_value4;
+
+public:
+	Something(int value1, double value2, char value3='c', float value4=34.6)
+		: m_value1(value1), m_value2(value2), m_value3(value3), m_value4(value4)
+	{
+	}
+};
+
+// ---------------------------------------------------------
+class RGBA
+{
+private:
+	int m_red;
+	int m_blue;
+	int m_green;
+	int m_alpha;
+
+public:
+	RGBA(int red=0, int blue=0, int green=0, int alpha=255)
+		: m_red(red), m_blue(blue), m_green(green), m_alpha(alpha)
+	{
+	}
+
+	void print()
+	{
+		std::cout << "r=" << m_red << " b=" << m_blue << " g=" << m_green << " a=" << m_alpha << '\n';
+	}
+};
+
 int main()
 {		
-	// DateClass
-	DateClass today = {2017, 1, 13};
-	today.print();
+	// ---------------------------------------------------------
+	// Date Class
+	Date today(2017, 1, 13);
+	today.Print();
 
+	// ---------------------------------------------------------
 	// Employees
 	Employee alex = {"Alex", 1, 25.00};
 	Employee emily = {"Emily", 2, 22.25};
@@ -90,6 +120,7 @@ int main()
 	alex.print();
 	emily.print();
 
+	// ---------------------------------------------------------
 	// 3D point class
 	Point3d point1;
 	point1.setValues(1.0, 2.0, 3.0);
@@ -110,6 +141,7 @@ int main()
 	else
 		std::cout << "point1 and point3 are not equal\n";
 
+	// ---------------------------------------------------------
 	// Ball quiz
 	Ball def;
 	def.print();
@@ -119,6 +151,11 @@ int main()
 
 	Ball blueTwenty("blue", 20.0);
 	blueTwenty.print();
+
+	// ---------------------------------------------------------
+	// RGB class quiz
+	RGBA teal(0, 127, 127);
+	teal.print();
 
 	return 0;
 }
