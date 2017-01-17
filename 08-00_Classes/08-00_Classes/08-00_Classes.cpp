@@ -6,6 +6,7 @@
 #include <string>
 #include <stdint.h>
 #include "Date.h"
+#include "Point2d.h"
 
 // ---------------------------------------------------------
 class Employee
@@ -156,6 +157,16 @@ int main()
 	// RGB class quiz
 	RGBA teal(0, 127, 127);
 	teal.print();
+
+	// ---------------------------------------------------------
+	// 2D Point Class quiz
+	std::cout << '\n';
+	Point2d first;
+	Point2d second(3.0, 4.0);
+	first.print();
+	second.print();
+	//std::cout << "Distance between two points: " << first.distanceTo(second) << '\n';
+	std::cout << "Distance between two points: " << distanceFrom(first, second) << '\n';
 
 	return 0;
 }
