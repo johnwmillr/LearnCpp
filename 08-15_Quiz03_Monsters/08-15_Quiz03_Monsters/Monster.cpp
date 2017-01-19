@@ -31,9 +31,3 @@ void Monster::print()
 	std::cout << getName() << " the " << getTypeString()
 		<< " has " << getHitPoints() << " hit points and says " << getRoar() << "\n";
 }
-
-
-
-
-
-
