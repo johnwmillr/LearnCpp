@@ -16,7 +16,7 @@ public:
 	
 private:
 	int getRandomNumber(int min, int max);
-	void swapCard(Card a, Card b);
+	void swapCard(Card &a, Card &b);
 
 };
 
