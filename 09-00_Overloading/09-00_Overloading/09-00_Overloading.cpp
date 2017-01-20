@@ -12,52 +12,74 @@ private:
 public:
 	Fraction(int num=0, int den=0) : m_num(num), m_den(den)
 	{
+		reduce();
 	}
-
 	
-	friend Fraction operator*(Fraction frac, int num)
+	static int gcd(int a, int b)
 	{
-		return Fraction(frac.m_num*num,frac.m_den);
+		return b == 0 ? a : gcd(b, a % b);
 	}
 
-	friend Fraction operator*(int num, Fraction frac)
+	void reduce()
 	{
-		return Fraction(frac.m_num*num,frac.m_den);
+		int gcd = Fraction::gcd(m_num, m_den);
+		m_num /= gcd;
+		m_den /= gcd;
 	}
 
-	friend Fraction operator*(Fraction f1, Fraction f2)
-	{
-		return Fraction(f1.m_num*f2.m_num,f1.m_den*f2.m_den);
-	}
+	// Operator Overloading
+	// Multiplication
+	friend Fraction operator*(const Fraction &f1, int num);
+	friend Fraction operator*(int num, const Fraction &f1);	
+	friend Fraction operator*(const Fraction &f1, const Fraction &f2);
 
-	void print()
-	{
-		std::cout << m_num << "/" << m_den << '\n';
-	}
+	// Input/Output	
+	friend std::ostream& operator<< (std::ostream &out, const Fraction &frac);
+	friend std::istream& operator>> (std::istream &in, Fraction &frac);
 };
 
+Fraction operator*(const Fraction &f1, int num)
+{
+	return Fraction(f1.m_num*num,f1.m_den);
+}
+
+Fraction operator*(int num, const Fraction &f1)
+{
+	return Fraction(f1.m_num*num,f1.m_den);
+}
+
+Fraction operator*(const Fraction &f1, const Fraction &f2)
+{
+	return Fraction(f1.m_num*f2.m_num,f1.m_den*f2.m_den);
+}
+
+std::ostream& operator<<(std::ostream &out, const Fraction &frac)
+{
+	out << frac.m_num << "/" << frac.m_den;
+	return out;
+}
+
+std::istream& operator>>(std::istream &in, Fraction &frac)
+{
+	char c;
+	
+	in >> frac.m_num;
+	in >> c; // ignore the '/' separator
+	in >> frac.m_den;
+	return in;
+}
 
 int main()
 {
 
-	Fraction f1(2, 5);
-    f1.print();
+	Fraction f1;
+	std::cout << "Enter fraction 1: ";
+	std::cin >> f1;
  
-    Fraction f2(3, 8);
-    f2.print();
+	Fraction f2;
+	std::cout << "Enter fraction 2: ";
+	std::cin >> f2;
  
-    Fraction f3 = f1 * f2;
-    f3.print();
- 
-    Fraction f4 = f1 * 2;
-    f4.print();
- 
-    Fraction f5 = 2 * f2;
-    f5.print();
- 
-    Fraction f6 = Fraction(1, 2) * Fraction(2, 3) * Fraction(3, 4);
-    f6.print();
-
+	//std::cout << f1 << " * " << f2 << " is " << f1 * f2 << '\n';
 	return 0;
 }
-
