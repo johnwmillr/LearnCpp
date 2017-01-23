@@ -1,48 +1,11 @@
 // 13-00_FunctionTemplates.cpp : Defines the entry point for the console application.
-//
-
 #include "stdafx.h"
 #include <iostream>
+#include "Cents.h"
 #include "Array.h"
 #include "Pair.h"
-
-
-template <typename T>
-const T& max(const T& x, const T& y)
-{
-	return (x > y) ? x : y;
-}
-
-class Cents
-{
-private:
-	int m_cents;
-public:
-	Cents(int cents) : m_cents(cents)
-	{
-	}
-
-	friend bool operator>(Cents &c1, Cents &c2)
-	{
-		return (c1.m_cents > c2.m_cents);
-	}
-
-	friend std::ostream& operator<< (std::ostream &out, const Cents &cents)
-	{
-		out << cents.m_cents << " cents ";
-		return out;
-	}
-
-	void operator+=(Cents cents)
-	{
-		m_cents += cents.m_cents;
-	}
-
-	void operator/=(int value)
-	{
-		m_cents /= value;
-	}
-};
+#include "Pair2.h"
+#include "StringValuePair.h"
 
 template <class T>
 T average(T *array, int length)
@@ -58,9 +21,10 @@ T average(T *array, int length)
 int main()
 {
 
+	/*
 	Cents array3[] = { Cents(5), Cents(10), Cents(15), Cents(14) };
-	std::cout << average(array3, 4) << '\n';		
-
+	std::cout << "Average in array: " << average(array3, 4) << '\n';	
+		
 	// Templated array class
 	Array<int> intArray(12);
 	Array<double> doubleArray(12);
@@ -73,17 +37,32 @@ int main()
 
 	for (int count = intArray.getLength()-1; count >= 0; --count)
 		std::cout << intArray[count] << '\t' << doubleArray[count] << '\n';
+	
+	
 
 	// -----------------------------------------------
 	// Pair class
+	std::cout << "\n----------Pair\n";
 	Pair<int> p1(5,8);
 	std::cout << "Pair: " << p1.first() << ' ' << p1.second() << '\n';
  
-	//const Pair<double> p2(2.3, 4.5);
-	//std::cout << "Pair: " << p2.first() << ' ' << p2.second() << '\n';
+	const Pair<double> p2(2.3, 4.5);
+	std::cout << "Pair: " << p2.first() << ' ' << p2.second() << '\n';
 
-
-
+	// -----------------------------------------------
+	// Pair2 class (mixed type pairs)
+	std::cout << "\n----------Pair2\n";
+	Pair2<int, double> p3(5, 6.7);
+	std::cout << "Pair: " << p3.first() << ' ' << p3.second() << '\n';
+ 
+	const Pair2<double, int> p4(2.3, 4);
+	std::cout << "Pair: " << p4.first() << ' ' << p4.second() << '\n';
+	*/
+	// -----------------------------------------------
+	// StringValuePair class
+	std::cout << "\n----------StringValuePair\n";
+	StringValuePair<int> svp("Hello", 5);
+	std::cout << "Pair: " << svp.first() << ' ' << svp.second() << '\n';
 
 	return 0;
 }

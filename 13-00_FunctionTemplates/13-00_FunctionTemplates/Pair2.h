@@ -1,27 +1,23 @@
-#ifndef PAIR_H
-#define PAIR_H
+#ifndef PAIR2_H
+#define PAIR2_H
 
-template <class T>
-class Pair
+template <class T, class S>
+class Pair2
 {
 private:
 	T m_a;
-	T m_b;
+	S m_b;
 public:
-	Pair(const T& a, const T& b) : m_a(a), m_b(b)
+	Pair2(const T& a, const S& b) : m_a(a), m_b(b)
 	{
 	}
 
-	// Access the first or second element of the pair	
-	T& first()  {return m_a;}
-	const T& first()  const {return m_a;}
-	T& second() {return m_b;}
-	const T& second() const {return m_b;}
+	// Access the first or second element of the pair				
+	T& first() {return m_a;}
+	const T& first() const {return m_a;}
+	S& second() {return m_b;}
+	const S& second() const {return m_b;}
 
-
-	// Little confused here on the usage of const and &
-	// I think they need to be const references b/c the template
-	// could be a class type
 	// From comments
 	/*My first() and second() aren’t getters so much as they are accessors
 	(in that they both allow get and set). Your version is close to typical
@@ -38,6 +34,5 @@ public:
 	That’s probably the safest choice all-around.
 	*/
 };
-
 
 #endif
