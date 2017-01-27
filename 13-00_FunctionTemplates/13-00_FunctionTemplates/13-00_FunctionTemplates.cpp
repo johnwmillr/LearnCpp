@@ -21,7 +21,7 @@ T average(T *array, int length)
 int main()
 {
 
-	/*
+	
 	Cents array3[] = { Cents(5), Cents(10), Cents(15), Cents(14) };
 	std::cout << "Average in array: " << average(array3, 4) << '\n';	
 		
@@ -37,8 +37,7 @@ int main()
 
 	for (int count = intArray.getLength()-1; count >= 0; --count)
 		std::cout << intArray[count] << '\t' << doubleArray[count] << '\n';
-	
-	
+		
 
 	// -----------------------------------------------
 	// Pair class
@@ -57,7 +56,7 @@ int main()
  
 	const Pair2<double, int> p4(2.3, 4);
 	std::cout << "Pair: " << p4.first() << ' ' << p4.second() << '\n';
-	*/
+	
 	// -----------------------------------------------
 	// StringValuePair class
 	std::cout << "\n----------StringValuePair\n";
